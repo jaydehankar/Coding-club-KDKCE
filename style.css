@@ -1,57 +1,336 @@
+/* ------------------------- */
+/* RESET AND BASE STYLES     */
+/* ------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ------------------------- */
+/* THEME VARIABLES           */
+/* ------------------------- */
+:root {
+  --clr-primary: #0d6efd;
+  --clr-light: #ffffff;
+  --clr-dark: #0f0f0f;
+  --clr-text: #000000;
+  --bg-color: #ffffff;
+  --nav-color: #ffffff;
+  --card-color: #f8f9fa;
+}
+
+/* ------------------------- */
+/* BASE BODY STYLING         */
+/* ------------------------- */
+body {
+  background-color: var(--bg-color);
+  color: var(--clr-text);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ------------------------- */
+/* NAVBAR STYLING            */
+/* ------------------------- */
+.navbar {
+  background-color: var(--nav-color) !important;
+  transition: background 0.3s ease;
+  padding: 12px 0;
+}
+
+/* Navbar links */
 .navbar .nav-link {
-  padding: 4px 25px;
+  position: relative;
+  padding: 8px 20px;
   margin: 0 6px;
-  border-radius: 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--clr-primary);
+  text-transform: capitalize;
   transition: all 0.3s ease;
-  color: black;
-  background-color: #0d6efd;
 }
 
+/* Active or Hover effect */
+.navbar .nav-link.active,
 .navbar .nav-link:hover {
-  background-color: #102c56; /* Bootstrap blue */
-  color: white !important;
+  background-color: var(--clr-primary);
+  color: var(--clr-light) !important;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.6);
+  transform: translateY(-1px);
 }
 
-/* Hero / Background */
+/* Underline animation */
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0%;
+  height: 2px;
+  background: var(--clr-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 60%;
+}
+
+/* ------------------------- */
+/* HERO SECTION              */
+/* ------------------------- */
 .home-bg {
   position: relative;
   background: url("image/bg.jpg") no-repeat center center/cover;
-  height:700px;
+  height: 700px;
   display: flex;
-  align-items: center;          /* center vertically */
+  align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 20px;
-  color: #fff;                  /* white text */
+  color: #fff;
 }
 
-/* dark overlay for readability */
 .home-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* black overlay at 55% opacity */
   z-index: 0;
 }
 
-/* bring text above overlay */
 .home-bg > div {
   position: relative;
   padding-top: 425px;
   z-index: 1;
 }
 
-/* text styles */
 .home-bg h1 {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #fff;
 }
 
 .home-bg p {
   font-size: 1.2rem;
-  color: #f1f1f1; /* softer white for paragraph */
+  color: #f1f1f1;
 }
 
+/* ------------------------- */
+/* CARD SECTION              */
+/* ------------------------- */
+.container-fluid {
+  margin-top: 100px;
+  width: 100%;
+}
+
+.row {
+  gap: 25px;
+  justify-content: center;
+}
+
+.cart-1 {
+  position: relative;
+  width: 280px;
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--card-color);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.cart-1:hover {
+  transform: translateY(-10px);
+}
+
+/* Circle animation */
+.circle-1 {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-1::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #fff;
+  border: 6px solid var(--clr-primary);
+  transition: all 0.6s ease;
+  filter: drop-shadow(0 0 8px var(--clr-primary))
+          drop-shadow(0 0 30px var(--clr-primary));
+}
+
+.cart-1:hover .circle-1::before {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--clr-primary);
+}
+
+/* Inner images */
+.circle-1 img {
+  width: 160px;
+  transition: all 0.5s ease;
+}
+
+.cart-1:hover .circle-1 img {
+  transform: scale(0);
+}
+
+/* Secondary image */
+.cart-1 > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0) rotate(315deg);
+  height: 180px;
+  transition: 0.5s ease-in-out;
+}
+
+.cart-1:hover > img {
+  transition-delay: 0.75s;
+  top: 25%;
+  left: 70%;
+  height: 220px;
+  transform: translate(-50%, -50%) scale(1) rotate(15deg);
+}
+
+/* First image — bring to front of circle */
+.circle-1 img {
+  width: 134px;       /* keep original size */
+  height: 134px;      /* keep original size */
+  transition: all 0.5s ease;
+  position: relative; /* important for stacking */
+  z-index: 2;         /* bring above the circle glow */
+}
+
+
+/* Text content */
+.contain-1 {
+  position: absolute;
+  width: 60%;
+  left: 15%;
+  padding: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+}
+
+.cart-1:hover .contain-1 {
+  opacity: 1;
+  visibility: visible;
+  left: 20px;
+}
+
+.contain-1 h1 {
+  color: #000;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.contain-1 p {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+/* ------------------------- */
+/* FOOTER SECTION            */
+/* ------------------------- */
+.site-footer {
+  background: var(--nav-color);
+  color: var(--clr-text);
+  padding: 50px 15px 25px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-weight: 700;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.footer-desc {
+  margin-top: 10px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.footer-nav h4,
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-nav li + li {
+  margin-top: 6px;
+}
+
+.footer-nav a,
+.footer-contact a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.footer-nav a:hover {
+  color: var(--clr-primary);
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--clr-text);
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+  color: var(--clr-primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  color: #666;
+}
 
