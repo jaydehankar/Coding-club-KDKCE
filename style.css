@@ -357,33 +357,33 @@ border-radius: 10px;
 }
 
 
-/* ---------- Large Screens (Desktops) ---------- */
-@media (min-width: 1201px) {
+/* ---------- Extra Large Screens (Big Desktops >1440px) ---------- */
+@media (min-width: 1441px) {
   .col-3 {
     flex: 0 0 22%;
-    max-width: 22%;
-  }
-  .cart-1 {
-    width: 100%;
+    max-width: 22%; /* 4 cards per row */
   }
 }
 
-/* ---------- Laptops and Large Tablets ---------- */
-@media (max-width: 1200px) and (min-width: 993px) {
+/* ---------- Laptops (993px to 1440px) ---------- */
+@media (max-width: 1440px) and (min-width: 993px) {
   .col-3 {
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 32%;
+    max-width: 32%; /* 3 cards per row */
+    margin-bottom: 25px;
   }
   .cart-1 {
     width: 100%;
   }
+
   .home-bg h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
   .home-bg p {
     font-size: 1.1rem;
   }
 }
+
 
 /* ---------- Tablets (Landscape & Portrait) ---------- */
 @media (max-width: 992px) and (min-width: 601px) {
@@ -396,7 +396,7 @@ border-radius: 10px;
 
   /* Hero Section */
   .home-bg {
-    height: 500px;
+    height: 650px;
   }
   .home-bg h1 {
     font-size: 2rem;
@@ -476,7 +476,7 @@ border-radius: 10px;
 /* ---------- Extra Small Devices (Small Phones) ---------- */
 @media (max-width: 400px) {
   .home-bg {
-    height: 350px;
+    height: 650px;
   }
   .home-bg h1 {
     font-size: 1.5rem;
@@ -493,4 +493,3 @@ border-radius: 10px;
     font-size: 0.8rem;
   }
 }
-
