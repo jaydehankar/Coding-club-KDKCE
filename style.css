@@ -121,8 +121,8 @@ body {
 /* CARD SECTION              */
 /* ------------------------- */
 .container-fluid {
-  margin-top: 100px;
   width: 100%;
+  padding: 13px;
 }
 
 .row {
@@ -234,13 +234,15 @@ body {
 }
 
 .contain-1 h1 {
-  color: #000;
+  color: #ffffff;
   text-transform: uppercase;
   font-size: 1.5em;
+  font-weight: 700;
+  font-style: italic;
 }
 
 .contain-1 p {
-  color: #333;
+  color: #F1F1F1;
   font-size: 0.9rem;
   line-height: 1.4rem;
 }
